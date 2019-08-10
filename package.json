@@ -1,0 +1,26 @@
+{
+  "name": "rutabaga",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "bob <bcoop713@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build src/index.html --out-dir public",
+    "deploy": "firebase deploy",
+    "predeploy": "yarn build",
+    "dev": "parcel src/index.html"
+  },
+  "dependencies": {
+    "@rebass/preset": "^4.0.2",
+    "emotion-theming": "^10.0.14",
+    "firebase": "^6.3.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "rebass": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.12.3"
+  }
+}
