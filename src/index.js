@@ -1,11 +1,12 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider } from "emotion-theming";
-import theme from "@rebass/preset";
-import { Text } from "rebass";
-import { initializeApp, firestore } from "firebase";
+import { initializeApp, firestore, auth } from "firebase";
+import { Grommet, Text, Box, Button } from "grommet";
+import { Login } from "./auth.js";
 
 import "firebase/firestore";
+import "normalize.css";
 
 initializeApp({
   apiKey: "AIzaSyDLT_4fVRwW4lpT0H45DRtK9SqFcLc9fis",
@@ -17,20 +18,18 @@ initializeApp({
   appId: "1:169894290399:web:69dff23d1161985a"
 });
 
-var db = firestore();
+const theme = {
+  global: {
+    font: {}
+  }
+};
 
-db.collection("targets")
-  .get()
-  .then(querySnapshot => {
-    querySnapshot.forEach(doc => {
-      console.log(doc.data());
-    });
-  });
-
-const App = () => (
-  <ThemeProvider theme={theme}>
-    <Text>Hello, world!</Text>
-  </ThemeProvider>
-);
+const App = () => {
+  return (
+    <Grommet theme={theme}>
+      <Login />
+    </Grommet>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById("root"));
